@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useMediaQuery } from '@/hooks/use-mobile';
 import {
   Table,
@@ -32,6 +32,7 @@ export function ResponsiveTable<T extends DataRow>({
 }: ResponsiveTableProps<T>) {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
+
   const renderValue = (column: ColumnConfig, value: unknown, row: T): React.ReactNode => {
     if (column.render) {
       return column.render(value, row) as React.ReactNode;
@@ -50,6 +51,10 @@ export function ResponsiveTable<T extends DataRow>({
     );
   }
 
+
+
+
+
   if (data.length === 0) {
     return <Empty description={emptyMessage} />;
   }
@@ -57,7 +62,7 @@ export function ResponsiveTable<T extends DataRow>({
   // Mobile: Card-based layout
   if (isMobile) {
     return (
-      <div className={cn('space-y-3 w-full', className)}>
+      <div className={cn('space-y-6 w-full', className)}>
         {data.map((row) => (
           <TableCard
             key={row.id}

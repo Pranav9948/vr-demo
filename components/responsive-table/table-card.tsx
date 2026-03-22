@@ -68,14 +68,14 @@ export function TableCard<T extends DataRow>({
   return (
     <Card
       className={cn(
-        'w-full transition-all hover:shadow-md ',
+        'w-full transition-all hover:shadow-md py-0 ',
         onRowClick && 'cursor-pointer',
         statusStyles[row.status] || 'border-l-2 border-border'
       )}
       onClick={() => onRowClick?.(row)}
     >
       <CardHeader className={cn(
-        'pb-3',
+        'pb-3 pt-4',
         headerStyles[row.status]
       )}>
         {/* Primary Fields */}
@@ -110,7 +110,7 @@ export function TableCard<T extends DataRow>({
 
       {/* Expandable Section */}
       {secondaryKeys.length > 0 && (
-        <CardContent className="pt-0">
+        <CardContent className="pt-0 pb-5">
           <Accordion type="single" collapsible className="w-full">
             {Object.entries(groupedSecondary).map(([category, categoryColumns]) => (
               <AccordionItem key={category} value={category} className="border-0">

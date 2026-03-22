@@ -16,130 +16,59 @@ import type { ColumnConfig, PrimaryFieldsConfig } from '@/types/table';
 
 const columns: ColumnConfig[] = [
   {
+    key: 'code',
+    label: 'Code',
+    sortable: true,
+    width: '100px',
+  },
+  {
     key: 'name',
     label: 'Name',
-    width: '15%',
+    sortable: true,
+    width: '150px',
+  },
+  {
+    key: 'designation',
+    label: 'Designation',
+    sortable: true,
+    width: '150px',
   },
   {
     key: 'email',
     label: 'Email',
-    width: '20%',
-  },
-  {
-    key: 'phone',
-    label: 'Phone',
-    width: '15%',
-    category: 'Contact Information',
+    sortable: true,
+    width: '200px',
   },
   {
     key: 'address',
     label: 'Address',
-    width: '20%',
-    category: 'Location Details',
+    sortable: false,
+    width: '200px',
   },
   {
     key: 'district',
     label: 'District',
-    width: '12%',
-    category: 'Location Details',
+    sortable: true,
+    width: '120px',
   },
   {
-    key: 'pan',
-    label: 'PAN',
-    width: '12%',
-    category: 'Identification',
+    key: 'panNumber',
+    label: 'PAN Number',
+    sortable: true,
+    width: '120px',
   },
   {
-    key: 'aadhaar',
-    label: 'Aadhaar',
-    width: '12%',
-    category: 'Identification',
-  },
-  {
-    key: 'policyId',
-    label: 'Policy ID',
-    width: '15%',
-    category: 'Policy Information',
-  },
-  {
-    key: 'policyType',
-    label: 'Policy Type',
-    width: '15%',
-    category: 'Policy Information',
-  },
-  {
-    key: 'status',
-    label: 'Status',
-    width: '12%',
-    category: 'Policy Information',
-    render: (value) => {
-      const statusStyles: Record<string, string> = {
-        active: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-        inactive:
-          'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
-        expired: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-        pending:
-          'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-      };
-      return (
-        <Badge className={statusStyles[value] || statusStyles.inactive}>
-          {value.charAt(0).toUpperCase() + value.slice(1)}
-        </Badge>
-      );
-    },
-  },
-  {
-    key: 'premium',
-    label: 'Premium',
-    width: '12%',
-    category: 'Payment Information',
-    render: (value) => `₹${value.toLocaleString()}`,
-  },
-  {
-    key: 'startDate',
-    label: 'Start Date',
-    width: '12%',
-    category: 'Dates',
-    render: (value) => new Date(value).toLocaleDateString('en-IN'),
-  },
-  {
-    key: 'expiryDate',
-    label: 'Expiry Date',
-    width: '12%',
-    category: 'Dates',
-    render: (value) => new Date(value).toLocaleDateString('en-IN'),
-  },
-  {
-    key: 'claimStatus',
-    label: 'Claim Status',
-    width: '15%',
-    category: 'Claim Information',
-    render: (value) => {
-      const statusColors: Record<string, string> = {
-        'No Claims':
-          'text-green-600 dark:text-green-400 font-medium',
-        'Pending Approval':
-          'text-yellow-600 dark:text-yellow-400 font-medium',
-        'Claim Under Review':
-          'text-blue-600 dark:text-blue-400 font-medium',
-        'Claim Processed':
-          'text-purple-600 dark:text-purple-400 font-medium',
-        'Policy Lapsed':
-          'text-red-600 dark:text-red-400 font-medium',
-      };
-      return (
-        <span className={statusColors[value] || 'text-gray-600 dark:text-gray-400'}>
-          {value}
-        </span>
-      );
-    },
+    key: 'aadharNumber',
+    label: 'Aadhar Number',
+    sortable: true,
+    width: '150px',
   },
 ];
 
 const primaryFields: PrimaryFieldsConfig = {
-  keys: ['name', 'email', 'district'],
+  keys: ['code', 'name', 'designation'],
   description: (row: InsurancePolicy) =>
-    `${row.policyType} • ${row.policyId}`,
+    `${row.district} • ${row.email}`,
 };
 
 export default function DemoPage() {

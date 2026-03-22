@@ -7,8 +7,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Enterprise Insurance Dashboard',
-  description: 'Mobile-first responsive table UI for insurance policies and reporting',
+  title: 'VR Insurance',
+  description: 'VR',
   generator: 'v0.app',
   viewport: {
     width: 'device-width',
